@@ -1,3 +1,3 @@
 # mickey_blockade
 
-<a href = "link to itch.io project here">Blockade Clone</a>
+<a href = "https://mickeymouska.itch.io/blockade-clone">Blockade Clone</a>
