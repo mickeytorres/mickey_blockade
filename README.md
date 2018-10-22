@@ -1,3 +1,3 @@
 # mickey_blockade
 
-<a href = "https://mickeymouska.itch.io/blockade-clone">Blockade Clone</a>
+<a href = "https://mickeymouska.itch.io/blockade-game-clone">Blockade Clone</a>
