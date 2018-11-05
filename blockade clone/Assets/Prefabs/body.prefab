@@ -22,11 +22,9 @@ GameObject:
   - component: {fileID: 212882701442664598}
   - component: {fileID: 61162223918709488}
   - component: {fileID: 50860958680858682}
-  - component: {fileID: 114096893997258358}
-  - component: {fileID: 114973030791771922}
   m_Layer: 0
   m_Name: body
-  m_TagString: Player
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207250400047116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.15, y: 1.41, z: 0}
-  m_LocalScale: {x: 0.0165, y: 0.0165, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.13912801, y: 0.139128, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,7 +49,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207250400047116}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -76,53 +74,19 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.4597473, y: 24.37011}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 417, y: 341}
-    newSize: {x: 0.01, y: 0.01}
+    oldSize: {x: 2.01, y: 2}
+    newSize: {x: 2.01, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 294.8228, y: 250.94722}
-  m_EdgeRadius: 0.5
---- !u!114 &114096893997258358
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1207250400047116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f0a314bdd3f4ff4acef67e0e0e9898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  PlayerNumber: 2
-  witchTrail: {fileID: 1859608425927596, guid: fbfbf8466e1d049c2b3bc48327ae9190, type: 2}
-  villagerTrail: {fileID: 1499759006568020, guid: 00fed8104eb304a8b83b4f10b13dba23,
-    type: 2}
-  speed: 0.25
---- !u!114 &114973030791771922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1207250400047116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f0a314bdd3f4ff4acef67e0e0e9898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  PlayerNumber: 1
-  witchTrail: {fileID: 1859608425927596, guid: fbfbf8466e1d049c2b3bc48327ae9190, type: 2}
-  villagerTrail: {fileID: 1499759006568020, guid: 00fed8104eb304a8b83b4f10b13dba23,
-    type: 2}
-  speed: 0.25
+  m_Size: {x: 2.01, y: 2}
+  m_EdgeRadius: 0
 --- !u!212 &212882701442664598
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -158,12 +122,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48c9d756bf7994182897cf7ffe83e15a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ca2eea136ca5410f840cbdf48f12673, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.01, y: 0.01}
+  m_Size: {x: 2.01, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

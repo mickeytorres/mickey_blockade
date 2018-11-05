@@ -6,11 +6,6 @@ TagManager:
   tags:
   - Border
   - Body
-  - Undefined
-  - Hellfire
-  - Fire
-  - Witch
-  - Villager
   layers:
   - Default
   - TransparentFX
@@ -20,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Border
-  - Fire
-  - Hellfire
-  - Player
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -47,13 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 1564870381
-    locked: 0
-  - name: Fire
-    uniqueID: 3195168601
-    locked: 0
-  - name: Hellfire
-    uniqueID: 1492906163
     locked: 0

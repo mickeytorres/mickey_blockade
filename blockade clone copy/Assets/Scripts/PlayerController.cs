@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -8,43 +8,28 @@ public class PlayerController : MonoBehaviour
 {
 
 	public GameManager gameManager;
-	
-	private float timer; 
+	public GameObject villagerTrail;
+
+	private float timer;
+	public float speed;
 	
 	private Rigidbody2D player;
 	
 	private Vector2 move;
-	
 	private Vector3 moveWhere;
-	private Vector3 originalPos;
 	
-	private int playerOneScore;
-	private int playerTwoScore;
+	public int PlayerNumber;
+
+	public AudioSource villagerWin;
+	public AudioSource allFail;
 	
-	public int playerNumber;
-	
-	public GameObject body;
-	private GameObject clone;
-	
-	public float speed;
-	
-	public Text scoreP1Text;
-	public Text scoreP2Text;
-	
-	
-	
-	
+
 	// Use this for initialization
 	void Start ()
 	{
 		player = GetComponent<Rigidbody2D>();
-		originalPos = gameObject.transform.position;
-		scoreP1Text.text = "";
-		scoreP2Text.text = "";
-		playerOneScore = 0;
-		playerTwoScore = 0;
 		
-		if (playerNumber % 2 == 0) //this should make it so any even numbered players go up while any odd numbers go down
+		if (PlayerNumber == 2)
 		{
 			move = Vector2.up;
 		} 
@@ -59,31 +44,29 @@ public class PlayerController : MonoBehaviour
 	{
 		timer += Time.deltaTime;
 
-		if (playerNumber % 2 == 0)
+		if (PlayerNumber == 2)
 		{
-			EvenPlayerMove();
+			P2Move();
 		} 
 		else
 		{
-			OddPlayerMove();
+			P1Move();
 		}
 
 		if (timer >= speed) //gets the body to instantiate
 		{
-			moveWhere = transform.position;
-			player.position += move;
-			Instantiate(body, moveWhere, transform.rotation); //it's still skipping a space so what's up?
-			timer = 0; //resets it to zero that it will continue to instantiate the body on each frame
+				moveWhere = transform.position;
+				player.position += move;
+
+			if (PlayerNumber == 1)
+			{
+				Instantiate(villagerTrail, moveWhere, transform.rotation);
+			}
+				timer = 0; //resets it to zero that it will continue to instantiate the body on each frame
 		}
-		
-		if (playerOneScore == 5 || playerTwoScore == 5)
-		{
-			gameManager.gameOver();
-		}
-		
 	}
 
-	void EvenPlayerMove()
+	void P2Move()
 	{
 		if (Input.GetKey(KeyCode.D))
 		{
@@ -103,7 +86,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void OddPlayerMove()
+	void P1Move()
 	{
 		if (Input.GetKey(KeyCode.RightArrow))
 		{
@@ -125,39 +108,42 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (!other.gameObject.CompareTag("Border") && !other.gameObject.CompareTag("Body")) 
-			
-			return;
-			Debug.Log("Hit border");
-			if (playerNumber == 2)
-				AddP1Score();
-			else if (playerNumber == 1) 
-				AddP2Score();
-
-
-		GameObject[] growingBody = GameObject.FindGameObjectsWithTag("Body");
-		foreach(GameObject body in growingBody)
-			Destroy(body);
-		RestartLevel();
 		
+		if (other.gameObject.CompareTag("Border"))
+		{
+			Debug.Log("Hit border");
+			gameManager.background.Stop();
+			gameManager.gameOver();
+			allFail.Play();
+			gameManager.EndGame.text = "Village? Cursed. \n Witch? Burned. \n Press SPACE to restart";
+			GameObject[] growingBody = GameObject.FindGameObjectsWithTag("Body");
+			foreach (GameObject villagerTrail in growingBody)
+				Destroy(villagerTrail);
+		}
+		else if (other.gameObject.CompareTag("Body") && PlayerNumber == 2)
+		{
+			Debug.Log("Hit enemy");
+			gameManager.background.Stop();
+			gameManager.gameOver();
+			villagerWin.Play();
+			gameManager.EndGame.text = "The village is safe again! \n Press SPACE to restart";
+			GameObject[] growingBody = GameObject.FindGameObjectsWithTag("Body");
+			foreach (GameObject villagerTrail in growingBody)
+				Destroy(villagerTrail);
+		}else if (other.gameObject.CompareTag("Player"))
+		{
+			Debug.Log("Hit player");
+			gameManager.background.Stop();
+			gameManager.gameOver();
+			allFail.Play();
+			gameManager.EndGame.text = "Village? Cursed. \n Witch? Burned. \n Press SPACE to restart";
+			GameObject[] growingBody = GameObject.FindGameObjectsWithTag("Body");
+			foreach (GameObject villagerTrail in growingBody)
+				Destroy(villagerTrail);
+		}
 
 
-	}
 	
-	public void AddP1Score ()
-	{
-		playerOneScore++;
-		scoreP1Text.text = playerOneScore.ToString();
-	}
-	
-	public void AddP2Score ()
-	{
-		playerTwoScore++;
-		scoreP2Text.text = playerTwoScore.ToString();
-	}
-
-	void RestartLevel()
-	{
-		gameObject.transform.position = originalPos;
+		
 	}
 }
